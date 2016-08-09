@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/card.css">
+    </head>
+    <body>
+        <script class="card-layout" type="text/x-handlebars-template">
+            
+            <div class="card-container" data-username="{{username}}">
+                
+                    <div class="card">
+                        <div class="card-image">
+                            <a class="card-close"></a>
+                          <img src="{{imageUrl}}" />
+                        </div>
+                        <div class="card-content">
+                            <div class="card-content-name">{{name}}</div>
+                            <div class="card-content-location">
+                                <span>Location:</span>
+                                <span>{{location}}</span>
+                            </div>
+                            <div class="card-content-follower">
+                                <span>Followers</span>
+                                <span>{{followers}}</span>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+            
+        </script>
+
+        <script class="card-layout-reRender" type="text/x-handlebars-template">
+            {{#each dataList}}
+                 <div class="card-container" data-username="{{username}}">
+                
+                    <div class="card">
+                        <div class="card-image">
+                            <a class="card-close"></a>
+                          <img src="{{imageUrl}}" />
+                        </div>
+                        <div class="card-content">
+                            <div class="card-content-name">{{name}}</div>
+                            <div class="card-content-location">
+                                <span>Location:</span>
+                                <span>{{location}}</span>
+                            </div>
+                            <div class="card-content-follower">
+                                <span>Followers</span>
+                                <span>{{followers}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </script>
+
+        <script id="main-layout" type="text/x-handlebars-template">
+            <div class="container">
+                <div class="inline-input-div">
+                    <input type="text" class="form-input" name="github-username" id ="github-username" placeholder="github login">
+                    <button class="btn-input" type="button" id="add-github-user-btn">Add</button>
+                </div>
+                <div class="sort-by">
+                    <span class="">Sort by:</span>
+                    <span class="sort-by-name cpointer">Name</span>
+                    <span class="sort-by-location cpointer">Location</span>
+                    <span class="sort-by-followers cpointer">Followers</span>
+                </div>
+                <div class="card-body">
+                </div>
+            </div>
+        </script>
+
+        <main>
+
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="js/main.js"></script>
+        
+        <script>
+            
+        </script>
+    </body>
+</html>
