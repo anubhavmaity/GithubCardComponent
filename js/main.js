@@ -46,6 +46,18 @@ var cards = {
   },
 
 
+  addClassHideToArrowDown: function(){
+
+    var arrowDownList = $( ".arrow-down" );
+    for ( var i = 0; i< arrowDownList.length; i++ ) {
+      if ( !$(arrowDownList[i] ).hasClass( "hide" ) ) {
+        $( arrowDownList[i] ).addClass( "hide" );
+      }
+    }
+
+  },
+
+
   sortByName: function(e) {
     
     function compare(a,b) {
@@ -54,7 +66,12 @@ var cards = {
       if (a.name >= b.name)
         return 1;
     }
-
+    $(".sort-by span").removeClass("sort-by-clicked");
+    $(".sort-by-name").addClass("sort-by-clicked");
+    this.addClassHideToArrowDown()
+    if ( $(".sort-by-name .arrow-down").hasClass("hide") ) {
+      $(".sort-by-name .arrow-down").removeClass("hide");
+    }
     this.dataList.sort(compare);
     console.log("dataList", this.dataList );
     this.reRenderCards(this.dataList);
@@ -62,16 +79,23 @@ var cards = {
 
 
   sortByLocation: function(e) {
+    
     function compare(a,b) {
       if (a.location < b.location)
         return -1;
       if (a.location >= b.location)
         return 1;
     }
-
+    $(".sort-by span").removeClass("sort-by-clicked");
+    $(".sort-by-location").addClass("sort-by-clicked");
+    this.addClassHideToArrowDown()
+    if ( $(".sort-by-location .arrow-down").hasClass("hide") ) {
+      $(".sort-by-location .arrow-down").removeClass("hide");
+    }
     this.dataList.sort(compare);
     console.log("dataList", this.dataList );
     this.reRenderCards(this.dataList);
+
   },
 
 
@@ -83,10 +107,16 @@ var cards = {
       if (a.followers >= b.followers)
         return 1;
     }
-
+    $(".sort-by span").removeClass("sort-by-clicked");
+    $(".sort-by-followers").addClass("sort-by-clicked");
+    this.addClassHideToArrowDown()
+    if ( $(".sort-by-followers .arrow-down").hasClass("hide") ) {
+      $(".sort-by-followers .arrow-down").removeClass("hide");
+    }
     this.dataList.sort(compare);
     console.log("dataList", this.dataList );
     this.reRenderCards(this.dataList);
+
   },
 
 
@@ -95,6 +125,9 @@ var cards = {
           console.log("hepp");
           cards.removeGithubUser(e);
       });
+     $(".card").on("click", function(e){
+        cards.viewUserProfile(e);
+     })
   }, 
 
   removeObjectFromArr: function( objects, val ){
@@ -111,6 +144,14 @@ var cards = {
   },
 
   
+  viewUserProfile: function(e) {
+
+    var currentTarget = $(e.currentTarget);
+    var profileUrl = $(currentTarget).attr("data-url");
+    location.href =  profileUrl;
+  },
+
+
   removeGithubUser: function(e) {
 
     var currentTarget = $(e.currentTarget);

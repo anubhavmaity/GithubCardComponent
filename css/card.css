@@ -27,13 +27,40 @@
   border-radius: .25rem;
   border: 1px solid rgba(0,0,0,.125);
   margin: 0.5rem 0 1rem 0;
+  -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.card:hover {
+    border: 1px solid #9BBEDC;
+}
+
+.card:hover .card-content-name, .card:hover .card-content-location, .card:hover .card-content-follower {
+  text-decoration: underline;
 }
 
 .card .card-image {
-  padding: 5px;
+  margin: 5px;
   position: relative; 
   overflow: hidden;
 /*   margin: 0 auto; */
+}
+
+.card-image-tag {
+  overflow: hidden;
+  -moz-transition-duration: .3s;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+  -moz-transition-property: transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
+.card-image-tag:hover {
+  -moz-trnsform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .card-close {
@@ -43,6 +70,7 @@
   width: 32px;
   height: 32px;
   opacity: 1;
+  z-index: 10
 }
 .card-close:hover {
   opacity: 1;
@@ -71,5 +99,47 @@
 .card .card-content {
   padding: 10px;
 	border-radius: 0 0 2px 2px;
+}
+
+.card-content-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.card-content-location {
+  margin-top: 0.3rem;
+}
+
+.card-content-location-text {
+  font-size: 0.86rem;
+  font-weight: bold;
+}
+
+.card-content-location-val {
+  font-size: 0.86rem;
+}
+
+.card-content-follower {
+  margin-top: 0.3rem;
+}
+
+.card-content-follower-text {
+  font-size: 0.86rem;
+  font-weight: bold;
+}
+
+.card-content-follower-val {
+  font-size: 0.86rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .card-container{
+      width: 100%
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+    .card-container{
+      width: 50%
+    }
 }
   
