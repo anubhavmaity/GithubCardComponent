@@ -15,7 +15,7 @@
     <body>
         <script class="card-layout" type="text/x-handlebars-template">
             
-            <div class="card-container cpointer" data-username="{{username}}">
+            <div class="card-container cpointer" title="{{username}}" data-username="{{username}}">
                     
                         <div class="card" data-url="{{html_url}}">
                             <div class="card-image">
@@ -23,12 +23,18 @@
                               <img src="{{imageUrl}}" class="card-image-tag"/>
                             </div>
                             <div class="card-content">
-                                <div class="card-content-name">{{name}}</div>
-                                <div class="card-content-location">
+                                <div class="card-content-name" title="{{name}}">
+                                    {{#if name}}
+                                        {{name}}
+                                    {{else}}
+                                        {{username}}
+                                    {{/if}}
+                                </div>
+                                <div class="card-content-location" title="{{location}}">
                                     <span class="card-content-location-text">Location:</span>
                                     <span class="card-content-location-val">{{location}}</span>
                                 </div>
-                                <div class="card-content-follower">
+                                <div class="card-content-follower" title="{{followers}}">
                                     <span class="card-content-follower-text">Followers:</span>
                                     <span class="card-content-follower-val">{{followers}}</span>
                                 </div>
@@ -42,7 +48,7 @@
 
         <script class="card-layout-reRender" type="text/x-handlebars-template">
             {{#each dataList}}
-                      <div class="card-container cpointer" data-username="{{username}}">
+                      <div class="card-container cpointer" title="{{username}}" data-username="{{username}}">
                     
                         <div class="card" data-url="{{html_url}}">
                             <div class="card-image">
@@ -50,12 +56,18 @@
                               <img src="{{imageUrl}}" class="card-image-tag"/>
                             </div>
                             <div class="card-content">
-                                <div class="card-content-name">{{name}}</div>
-                                <div class="card-content-location">
+                                <div class="card-content-name" title="{{name}}">
+                                    {{#if name}}
+                                        {{name}}
+                                    {{else}}
+                                        {{username}}
+                                    {{/if}}
+                                </div>
+                                <div class="card-content-location" title="{{location}}">
                                     <span class="card-content-location-text">Location:</span>
                                     <span class="card-content-location-val">{{location}}</span>
                                 </div>
-                                <div class="card-content-follower">
+                                <div class="card-content-follower" title="{{followers}}">
                                     <span class="card-content-follower-text">Followers:</span>
                                     <span class="card-content-follower-val">{{followers}}</span>
                                 </div>
@@ -74,7 +86,7 @@
                     <button class="btn-input" type="button" id="add-github-user-btn">Add</button>
                 </div>
                 <hr/>
-                <div class="sort-by">
+                <div class="sort-by hide">
                     <span class="">Sort by:</span>
                     <span class="sort-by-name cpointer">Name<span class="arrow-down hide"></span></span>
                     <span class="sort-by-location cpointer">Location<span class="arrow-down hide"></span></span>

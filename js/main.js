@@ -33,6 +33,11 @@ var cards = {
     $("#add-github-user-btn").on("click", function(e){
       cards.addGithubUser(e);
     });
+    $("#github-username").keyup(function(e){
+      if(e.keyCode == 13){
+        cards.addGithubUser(e);
+      }
+    });
     $(".sort-by-name").on("click", function(e){
       cards.sortByName(e);
     });
@@ -134,6 +139,7 @@ var cards = {
       this.dataList = objects.filter( function( obj ){
         return obj.username != val;
       });
+
   },
 
   checkPresenceOfObjectInArr: function( objects, val ) {
@@ -148,7 +154,7 @@ var cards = {
 
     var currentTarget = $(e.currentTarget);
     var profileUrl = $(currentTarget).attr("data-url");
-    location.href =  profileUrl;
+    window.open(profileUrl, '_blank')
   },
 
 
@@ -160,7 +166,9 @@ var cards = {
     var username = cardContainer.attr("data-username");
     cardContainer.remove();
     this.removeObjectFromArr( this.dataList, username );
-
+    if ( this.dataList.length < 2) {
+      $(".sort-by").addClass("hide");
+    }
   },
 
 
@@ -175,7 +183,8 @@ var cards = {
       url: this.configUrl.apiUrl + username
     
     }).done( function( response ){
-     
+      
+      console.log("response ", response);
       var context = {
         username: username,
         html_url: response["html_url"],
@@ -199,7 +208,12 @@ var cards = {
         alert("The username is already added");
       }
       
+      if (self.dataList.length > 1) {
+        $(".sort-by").removeClass("hide");
+      } 
     
+    }).error(function(error){
+      alert("No such username");
     });
 
   },

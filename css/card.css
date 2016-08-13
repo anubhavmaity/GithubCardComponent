@@ -104,9 +104,18 @@
 .card-content-name {
   font-size: 1rem;
   font-weight: bold;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .card-content-location {
   margin-top: 0.3rem;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-content-location-text {
@@ -120,6 +129,10 @@
 
 .card-content-follower {
   margin-top: 0.3rem;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-content-follower-text {
